@@ -15,14 +15,39 @@ import java.util.concurrent.TimeUnit;
  * @author annel
  */
 public class BarberoDormilon extends javax.swing.JFrame {
+
     public static int atendidos = 0;
     public static int retirados = 0;
-    
+    public ColaSillas<Silla> cola;
+
     /**
      * Creates new form BarberoDormilon
      */
     public BarberoDormilon() {
         initComponents();
+        cola = new ColaSillas<>(20);
+        cola.getCola().add(new Silla(jp_1, false));
+        cola.getCola().add(new Silla(jp_2, false));
+        cola.getCola().add(new Silla(jp_3, false));
+        cola.getCola().add(new Silla(jp_4, false));
+        cola.getCola().add(new Silla(jp_5, false));
+        cola.getCola().add(new Silla(jp_6, false));
+        cola.getCola().add(new Silla(jp_7, false));
+        cola.getCola().add(new Silla(jp_8, false));
+        cola.getCola().add(new Silla(jp_9, false));
+        cola.getCola().add(new Silla(jp_10, false));
+        cola.getCola().add(new Silla(jp_11, false));
+        cola.getCola().add(new Silla(jp_12, false));
+        cola.getCola().add(new Silla(jp_13, false));
+        cola.getCola().add(new Silla(jp_14, false));
+        cola.getCola().add(new Silla(jp_15, false));
+        cola.getCola().add(new Silla(jp_16, false));
+        cola.getCola().add(new Silla(jp_17, false));
+        cola.getCola().add(new Silla(jp_18, false));
+        cola.getCola().add(new Silla(jp_19, false));
+        cola.getCola().add(new Silla(jp_20, false));
+        lbl_retirados.setText("" + retirados);
+        lbl_atendidos.setText("" + atendidos);
     }
 
     /**
@@ -66,13 +91,14 @@ public class BarberoDormilon extends javax.swing.JFrame {
         jp_18 = new javax.swing.JPanel();
         jp_19 = new javax.swing.JPanel();
         jp_20 = new javax.swing.JPanel();
+        btn_clear = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lbl_titulo.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         lbl_titulo.setText("Barbero Dormilon");
 
-        jp_7.setBackground(new java.awt.Color(102, 102, 102));
+        jp_7.setBackground(new java.awt.Color(255, 255, 0));
 
         javax.swing.GroupLayout jp_7Layout = new javax.swing.GroupLayout(jp_7);
         jp_7.setLayout(jp_7Layout);
@@ -85,7 +111,7 @@ public class BarberoDormilon extends javax.swing.JFrame {
             .addGap(0, 64, Short.MAX_VALUE)
         );
 
-        jp_8.setBackground(new java.awt.Color(102, 102, 102));
+        jp_8.setBackground(new java.awt.Color(255, 255, 0));
 
         javax.swing.GroupLayout jp_8Layout = new javax.swing.GroupLayout(jp_8);
         jp_8.setLayout(jp_8Layout);
@@ -98,7 +124,7 @@ public class BarberoDormilon extends javax.swing.JFrame {
             .addGap(0, 64, Short.MAX_VALUE)
         );
 
-        jp_9.setBackground(new java.awt.Color(102, 102, 102));
+        jp_9.setBackground(new java.awt.Color(255, 255, 0));
 
         javax.swing.GroupLayout jp_9Layout = new javax.swing.GroupLayout(jp_9);
         jp_9.setLayout(jp_9Layout);
@@ -111,7 +137,7 @@ public class BarberoDormilon extends javax.swing.JFrame {
             .addGap(0, 64, Short.MAX_VALUE)
         );
 
-        jp_4.setBackground(new java.awt.Color(102, 102, 102));
+        jp_4.setBackground(new java.awt.Color(255, 255, 0));
 
         javax.swing.GroupLayout jp_4Layout = new javax.swing.GroupLayout(jp_4);
         jp_4.setLayout(jp_4Layout);
@@ -124,7 +150,7 @@ public class BarberoDormilon extends javax.swing.JFrame {
             .addGap(0, 64, Short.MAX_VALUE)
         );
 
-        jp_5.setBackground(new java.awt.Color(102, 102, 102));
+        jp_5.setBackground(new java.awt.Color(255, 255, 0));
 
         javax.swing.GroupLayout jp_5Layout = new javax.swing.GroupLayout(jp_5);
         jp_5.setLayout(jp_5Layout);
@@ -137,7 +163,7 @@ public class BarberoDormilon extends javax.swing.JFrame {
             .addGap(0, 64, Short.MAX_VALUE)
         );
 
-        jp_6.setBackground(new java.awt.Color(102, 102, 102));
+        jp_6.setBackground(new java.awt.Color(255, 255, 0));
 
         javax.swing.GroupLayout jp_6Layout = new javax.swing.GroupLayout(jp_6);
         jp_6.setLayout(jp_6Layout);
@@ -150,7 +176,7 @@ public class BarberoDormilon extends javax.swing.JFrame {
             .addGap(0, 64, Short.MAX_VALUE)
         );
 
-        jp_1.setBackground(new java.awt.Color(102, 102, 102));
+        jp_1.setBackground(new java.awt.Color(255, 255, 0));
 
         javax.swing.GroupLayout jp_1Layout = new javax.swing.GroupLayout(jp_1);
         jp_1.setLayout(jp_1Layout);
@@ -163,7 +189,7 @@ public class BarberoDormilon extends javax.swing.JFrame {
             .addGap(0, 64, Short.MAX_VALUE)
         );
 
-        jp_2.setBackground(new java.awt.Color(102, 102, 102));
+        jp_2.setBackground(new java.awt.Color(255, 255, 0));
 
         javax.swing.GroupLayout jp_2Layout = new javax.swing.GroupLayout(jp_2);
         jp_2.setLayout(jp_2Layout);
@@ -176,7 +202,7 @@ public class BarberoDormilon extends javax.swing.JFrame {
             .addGap(0, 64, Short.MAX_VALUE)
         );
 
-        jp_3.setBackground(new java.awt.Color(102, 102, 102));
+        jp_3.setBackground(new java.awt.Color(255, 255, 0));
 
         javax.swing.GroupLayout jp_3Layout = new javax.swing.GroupLayout(jp_3);
         jp_3.setLayout(jp_3Layout);
@@ -189,7 +215,7 @@ public class BarberoDormilon extends javax.swing.JFrame {
             .addGap(0, 64, Short.MAX_VALUE)
         );
 
-        jp_barbero.setBackground(new java.awt.Color(0, 102, 102));
+        jp_barbero.setBackground(new java.awt.Color(204, 255, 255));
 
         javax.swing.GroupLayout jp_barberoLayout = new javax.swing.GroupLayout(jp_barbero);
         jp_barbero.setLayout(jp_barberoLayout);
@@ -208,7 +234,7 @@ public class BarberoDormilon extends javax.swing.JFrame {
 
         jLabel4.setText("Numero de clientes");
 
-        btn_iniciar.setBackground(new java.awt.Color(255, 102, 0));
+        btn_iniciar.setBackground(new java.awt.Color(255, 255, 0));
         btn_iniciar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btn_iniciar.setLabel("Iniciar");
         btn_iniciar.addActionListener(new java.awt.event.ActionListener() {
@@ -227,7 +253,7 @@ public class BarberoDormilon extends javax.swing.JFrame {
         lbl_atendidos.setBackground(new java.awt.Color(51, 51, 51));
         lbl_atendidos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jp_10.setBackground(new java.awt.Color(102, 102, 102));
+        jp_10.setBackground(new java.awt.Color(255, 255, 0));
 
         javax.swing.GroupLayout jp_10Layout = new javax.swing.GroupLayout(jp_10);
         jp_10.setLayout(jp_10Layout);
@@ -240,7 +266,7 @@ public class BarberoDormilon extends javax.swing.JFrame {
             .addGap(0, 64, Short.MAX_VALUE)
         );
 
-        jp_11.setBackground(new java.awt.Color(102, 102, 102));
+        jp_11.setBackground(new java.awt.Color(255, 255, 0));
 
         javax.swing.GroupLayout jp_11Layout = new javax.swing.GroupLayout(jp_11);
         jp_11.setLayout(jp_11Layout);
@@ -253,7 +279,7 @@ public class BarberoDormilon extends javax.swing.JFrame {
             .addGap(0, 64, Short.MAX_VALUE)
         );
 
-        jp_12.setBackground(new java.awt.Color(102, 102, 102));
+        jp_12.setBackground(new java.awt.Color(255, 255, 0));
 
         javax.swing.GroupLayout jp_12Layout = new javax.swing.GroupLayout(jp_12);
         jp_12.setLayout(jp_12Layout);
@@ -266,7 +292,7 @@ public class BarberoDormilon extends javax.swing.JFrame {
             .addGap(0, 64, Short.MAX_VALUE)
         );
 
-        jp_13.setBackground(new java.awt.Color(102, 102, 102));
+        jp_13.setBackground(new java.awt.Color(255, 255, 0));
 
         javax.swing.GroupLayout jp_13Layout = new javax.swing.GroupLayout(jp_13);
         jp_13.setLayout(jp_13Layout);
@@ -279,7 +305,7 @@ public class BarberoDormilon extends javax.swing.JFrame {
             .addGap(0, 64, Short.MAX_VALUE)
         );
 
-        jp_14.setBackground(new java.awt.Color(102, 102, 102));
+        jp_14.setBackground(new java.awt.Color(255, 255, 0));
 
         javax.swing.GroupLayout jp_14Layout = new javax.swing.GroupLayout(jp_14);
         jp_14.setLayout(jp_14Layout);
@@ -292,7 +318,7 @@ public class BarberoDormilon extends javax.swing.JFrame {
             .addGap(0, 64, Short.MAX_VALUE)
         );
 
-        jp_15.setBackground(new java.awt.Color(102, 102, 102));
+        jp_15.setBackground(new java.awt.Color(255, 255, 0));
 
         javax.swing.GroupLayout jp_15Layout = new javax.swing.GroupLayout(jp_15);
         jp_15.setLayout(jp_15Layout);
@@ -305,7 +331,7 @@ public class BarberoDormilon extends javax.swing.JFrame {
             .addGap(0, 64, Short.MAX_VALUE)
         );
 
-        jp_16.setBackground(new java.awt.Color(102, 102, 102));
+        jp_16.setBackground(new java.awt.Color(255, 255, 0));
 
         javax.swing.GroupLayout jp_16Layout = new javax.swing.GroupLayout(jp_16);
         jp_16.setLayout(jp_16Layout);
@@ -318,7 +344,7 @@ public class BarberoDormilon extends javax.swing.JFrame {
             .addGap(0, 64, Short.MAX_VALUE)
         );
 
-        jp_17.setBackground(new java.awt.Color(102, 102, 102));
+        jp_17.setBackground(new java.awt.Color(255, 255, 0));
 
         javax.swing.GroupLayout jp_17Layout = new javax.swing.GroupLayout(jp_17);
         jp_17.setLayout(jp_17Layout);
@@ -331,7 +357,7 @@ public class BarberoDormilon extends javax.swing.JFrame {
             .addGap(0, 64, Short.MAX_VALUE)
         );
 
-        jp_18.setBackground(new java.awt.Color(102, 102, 102));
+        jp_18.setBackground(new java.awt.Color(255, 255, 0));
 
         javax.swing.GroupLayout jp_18Layout = new javax.swing.GroupLayout(jp_18);
         jp_18.setLayout(jp_18Layout);
@@ -344,7 +370,7 @@ public class BarberoDormilon extends javax.swing.JFrame {
             .addGap(0, 64, Short.MAX_VALUE)
         );
 
-        jp_19.setBackground(new java.awt.Color(102, 102, 102));
+        jp_19.setBackground(new java.awt.Color(255, 255, 0));
 
         javax.swing.GroupLayout jp_19Layout = new javax.swing.GroupLayout(jp_19);
         jp_19.setLayout(jp_19Layout);
@@ -357,7 +383,7 @@ public class BarberoDormilon extends javax.swing.JFrame {
             .addGap(0, 64, Short.MAX_VALUE)
         );
 
-        jp_20.setBackground(new java.awt.Color(102, 102, 102));
+        jp_20.setBackground(new java.awt.Color(255, 255, 0));
 
         javax.swing.GroupLayout jp_20Layout = new javax.swing.GroupLayout(jp_20);
         jp_20.setLayout(jp_20Layout);
@@ -369,6 +395,14 @@ public class BarberoDormilon extends javax.swing.JFrame {
             jp_20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 64, Short.MAX_VALUE)
         );
+
+        btn_clear.setBackground(new java.awt.Color(204, 255, 204));
+        btn_clear.setText("Clear");
+        btn_clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_clearActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -410,55 +444,56 @@ public class BarberoDormilon extends javax.swing.JFrame {
                         .addGap(25, 25, 25)
                         .addComponent(lbl_retirados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(18, 18, 18)
-                        .addComponent(lbl_atendidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btn_iniciar)
+                            .addComponent(jLabel5))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(lbl_atendidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_clear)
+                                .addGap(15, 15, 15)))))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jp_18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jp_13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jp_8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jp_19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jp_14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jp_9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jp_20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jp_15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jp_10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jp_18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jp_5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jp_4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jp_3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btn_iniciar))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(10, 10, 10)
-                                                .addComponent(lbl_barbero))
-                                            .addComponent(jp_barbero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(184, 184, 184))))))
+                        .addComponent(jp_13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jp_8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(108, 108, 108)
-                        .addComponent(lbl_sillas)))
+                        .addComponent(jp_19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jp_14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jp_9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jp_20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jp_15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jp_10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jp_5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jp_4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jp_3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(lbl_barbero))
+                            .addComponent(jp_barbero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(252, 252, 252))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(108, 108, 108)
+                .addComponent(lbl_sillas)
                 .addGap(68, 68, 68))
         );
         jPanel1Layout.setVerticalGroup(
@@ -512,7 +547,9 @@ public class BarberoDormilon extends javax.swing.JFrame {
                                 .addGap(70, 70, 70)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jp_barbero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btn_iniciar))
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(btn_iniciar)
+                                        .addComponent(btn_clear)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lbl_barbero))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -551,29 +588,38 @@ public class BarberoDormilon extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_iniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_iniciarActionPerformed
-        
         // Creando pool de hilos para llegadas concurrentes
-        ExecutorService  clientes = Executors.newCachedThreadPool();
-        
-        ColaSillas<Integer> cola = new ColaSillas<>(20);
+        ExecutorService ejecutor = Executors.newCachedThreadPool();
         
         int clientes_entrada = Integer.parseInt(jtf_numero_clientes.getText());
+        ejecutor.execute(new HiloBarbero(cola, clientes_entrada));
+        ejecutor.execute(new Hilo(cola, clientes_entrada));
         
-        for (int i = 0; i < clientes_entrada; i++) {
-            clientes.execute( new Hilo(cola,i));
-        }
-
-        clientes.shutdown();
-        
-        try {
-            clientes.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
-            cola.print();
-            System.out.println(atendidos);
-            System.out.println(retirados);
-        } catch (Exception e) {
-        }
+        ejecutor.shutdown();
     }//GEN-LAST:event_btn_iniciarActionPerformed
 
+    private void btn_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clearActionPerformed
+        //Eliminando elementos
+        while(this.cola.getContador()>0){
+            this.cola.remover();
+        }
+        
+        jtf_numero_clientes.setText("");
+        atendidos = 0;
+        retirados = 0;
+        lbl_atendidos.setText("" + atendidos);
+        lbl_retirados.setText("" + retirados);
+    }//GEN-LAST:event_btn_clearActionPerformed
+
+//    public static void pintarSillas(Silla silla, boolean tipo) {
+//        Color col;
+//        if (tipo) {
+//            col = Color.red;
+//        } else {
+//            col = Color.yellow;
+//        }
+//        silla.setColor(silla.getElemento(), col);
+//    }
     /**
      * @param args the command line arguments
      */
@@ -610,6 +656,7 @@ public class BarberoDormilon extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_clear;
     private javax.swing.JButton btn_iniciar;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -638,9 +685,9 @@ public class BarberoDormilon extends javax.swing.JFrame {
     public static javax.swing.JPanel jp_9;
     public static javax.swing.JPanel jp_barbero;
     private javax.swing.JTextField jtf_numero_clientes;
-    private javax.swing.JLabel lbl_atendidos;
+    public static javax.swing.JLabel lbl_atendidos;
     private javax.swing.JLabel lbl_barbero;
-    private javax.swing.JLabel lbl_retirados;
+    public static javax.swing.JLabel lbl_retirados;
     private javax.swing.JLabel lbl_sillas;
     private javax.swing.JLabel lbl_titulo;
     // End of variables declaration//GEN-END:variables

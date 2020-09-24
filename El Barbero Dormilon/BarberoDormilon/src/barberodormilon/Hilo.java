@@ -5,36 +5,43 @@
  */
 package barberodormilon;
 
+import static barberodormilon.BarberoDormilon.lbl_retirados;
+import static barberodormilon.BarberoDormilon.retirados;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
 /**
  *
  * @author annel
  */
 public class Hilo implements Runnable {
-    
-    ColaSillas<Integer> cola;
+
+    ColaSillas<Silla> cola;
     int numero;
 
-    public Hilo(ColaSillas<Integer> cola, int numero) {
+    public Hilo(ColaSillas<Silla> cola, int numero) {
         this.cola = cola;
         this.numero = numero;
     }
 
     @Override
     public void run() {
-        if(this.cola.getSizeCola()>0){
-            cola.remover();
-        }else if(this.cola.getSizeCola()==20){
-            BarberoDormilon.retirados++;
-        }else{
-            cola.insertar(numero);            
+        ExecutorService clientes = Executors.newCachedThreadPool();
+        for (int i = 0; i < this.numero; i++) {
+            try {
+                Thread.sleep(200);
+            } catch (Exception e) {
+            }
+            clientes.execute(new HiloCliente(cola));
         }
-//        Random r = new Random();
-//        int random_number = r.nextInt(2);
-//        
-//        if(random_number == 0){
-//            cola.insertar(numero);
-//        } else {
-//            cola.remover();
-//        }
+        
+        clientes.shutdown();
+        
+        try {
+            clientes.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
+        } catch (Exception e) {
+        }
     }
+
 }
