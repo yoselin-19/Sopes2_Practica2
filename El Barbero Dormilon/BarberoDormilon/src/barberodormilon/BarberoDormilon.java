@@ -611,15 +611,7 @@ public class BarberoDormilon extends javax.swing.JFrame {
         lbl_retirados.setText("" + retirados);
     }//GEN-LAST:event_btn_clearActionPerformed
 
-//    public static void pintarSillas(Silla silla, boolean tipo) {
-//        Color col;
-//        if (tipo) {
-//            col = Color.red;
-//        } else {
-//            col = Color.yellow;
-//        }
-//        silla.setColor(silla.getElemento(), col);
-//    }
+
     /**
      * @param args the command line arguments
      */

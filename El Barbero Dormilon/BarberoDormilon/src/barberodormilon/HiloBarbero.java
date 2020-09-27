@@ -5,7 +5,6 @@
  */
 package barberodormilon;
 
-import barberodormilon.BarberoDormilon;
 import static barberodormilon.BarberoDormilon.atendidos;
 import static barberodormilon.BarberoDormilon.lbl_atendidos;
 import static barberodormilon.BarberoDormilon.retirados;

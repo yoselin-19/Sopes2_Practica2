@@ -5,8 +5,6 @@
  */
 package barberodormilon;
 
-import static barberodormilon.BarberoDormilon.lbl_retirados;
-import static barberodormilon.BarberoDormilon.retirados;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;

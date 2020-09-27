@@ -9,7 +9,6 @@ import java.awt.Color;
 import java.util.LinkedList;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
-import barberodormilon.BarberoDormilon;
 
 /**
  *
@@ -76,12 +75,6 @@ public class ColaSillas<E> {
         } catch (Exception e) {
         } finally {
             bloqueo.unlock();
-        }
-    }
-
-    public void print() {
-        for (int i = 0; i < this.cola.size(); i++) {
-            System.out.println("Se insertó en : [" + i + "] - valor : " + cola.get(i));
         }
     }
 
