@@ -7,13 +7,10 @@ package sopes2_practica2_parte1;
 
 import java.awt.Color;
 import java.util.LinkedList;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import java.util.concurrent.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -25,6 +22,7 @@ public class Ventana extends javax.swing.JFrame {
      * Creates new form Ventana
      */
     public static int timerSleep = 500;
+    public static int timerOut = 200;
     public static JLabel arregloLabel[] = new JLabel[20];
     public static JScrollPane scroll;
     public static JTextArea logs;
@@ -32,10 +30,14 @@ public class Ventana extends javax.swing.JFrame {
     ExecutorService serviceIn;
     ExecutorService serviceOut;
     
+    ExecutorService serviceColaIn, serviceColaOut;
+    
     public Ventana() {
         initComponents();
         serviceIn = Executors.newCachedThreadPool();
         serviceOut = Executors.newCachedThreadPool();
+        serviceColaIn = Executors.newCachedThreadPool();
+        serviceColaOut = Executors.newCachedThreadPool();
         
         int posY = 55;
         int posX = 250;
@@ -194,15 +196,26 @@ public class Ventana extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        LinkedList<Integer> listaIN = new LinkedList<>();
+        LinkedList<Integer> listaOut = new LinkedList<>();
+        
         try {
-            serviceIn.execute(new PuertaEntrada(new LinkedList<>()));
-            serviceOut.execute(new PuertaSalida(new LinkedList<>())); 
+            serviceIn.execute(new PuertaEntrada(listaIN));
+            serviceOut.execute(new PuertaSalida(listaOut)); 
+            serviceColaIn.execute(new HiloColaIn(listaIN));
+            serviceColaOut.execute(new HiloColaOut(listaOut));
         } catch (RejectedExecutionException ex) {
             //System.out.println("Ex1: " + ex.getMessage());
             serviceIn = Executors.newCachedThreadPool();
             serviceOut = Executors.newCachedThreadPool();
-            serviceIn.execute(new PuertaEntrada(new LinkedList<>()));
-            serviceOut.execute(new PuertaSalida(new LinkedList<>())); 
+            serviceColaIn = Executors.newCachedThreadPool();
+            serviceColaOut = Executors.newCachedThreadPool();
+            
+            serviceIn.execute(new PuertaEntrada(listaIN));
+            serviceOut.execute(new PuertaSalida(listaOut)); 
+            serviceColaIn.execute(new HiloColaIn(listaIN));
+            serviceColaOut.execute(new HiloColaOut(listaOut));
+         
         }
               
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -212,9 +225,14 @@ public class Ventana extends javax.swing.JFrame {
         try {
             serviceIn.shutdownNow();
             serviceOut.shutdownNow();
+            serviceColaIn.shutdownNow();
+            serviceColaOut.shutdownNow();
+            
             serviceIn.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
             serviceOut.awaitTermination(Long.MIN_VALUE, TimeUnit.NANOSECONDS);
-            //Estanteria.reiniciandoEstanteria();
+            serviceColaIn.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
+            serviceColaOut.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
+            
         } catch (RejectedExecutionException e1) {
             System.out.println("E1: " + e1.getMessage());
         } catch (InterruptedException e2) {

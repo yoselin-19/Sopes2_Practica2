@@ -17,7 +17,6 @@ import java.util.logging.Logger;
  */
 public class PuertaEntrada implements Runnable {
     
-    public boolean estaAbierta = true; 
     ReentrantLock lockIn;
     public LinkedList<Integer> listaIn;
     
@@ -30,17 +29,14 @@ public class PuertaEntrada implements Runnable {
     @Override
     public void run() {
         //colocandoCajaEnEstanteria();
-        while(estaAbierta){
+        while(true){
             try {
                 colocandoCajaEnEstanteria();
                 Thread.sleep(Ventana.timerSleep);
-                verificandoListaIn();
-                Thread.sleep(Ventana.timerSleep);
             } catch (InterruptedException ex) {
-                System.out.println(ex.getMessage());
+                //System.out.println(ex.getMessage());
                 return;
             }
-            
         }
     }
     
@@ -72,41 +68,4 @@ public class PuertaEntrada implements Runnable {
             this.lockIn.unlock();
         }
     }
-    
-    private void verificandoListaIn(){
-        try {
-            this.lockIn.lock();
-            if(this.listaIn.isEmpty()) return;
-            if(Estanteria.espaciosOcupados > 20){
-                Ventana.logs.append("Se quiso colocar una caja de la cola, pero esta llena la estanteria\n\n");
-                return;
-            }
-            
-            if(Estanteria.verDisponibilidad(this.listaIn.getFirst()) == 0){// si ahora quiere colocar en un indice vacio
-                Estanteria.llenandoIndiceEstanteria(this.listaIn.getFirst());
-                Ventana.arregloLabel[this.listaIn.getFirst()].setBackground(Color.BLACK);
-                Ventana.logs.append("Se colocó caja en indice " + this.listaIn.getFirst() + ", desde la cola.\n\n");
-                this.listaIn.removeFirst();
-                Ventana.lblTotalColaIn.setText(String.valueOf(this.listaIn.size()));
-                return;
-            }
-            Ventana.logs.append("Se trato de colocar en indice " + this.listaIn.getFirst() + ", pero esta ocupado, por lo que sigue en cola.\n\n");
-        } catch(Exception e){
-            
-        } finally {
-            this.lockIn.unlock();
-        }
-    }
-    
-    public boolean getEstaAbierta(){
-        return this.estaAbierta;
-    }
-    
-    public void setEstaAbierta(boolean nuevoValor){
-        estaAbierta = nuevoValor;
-    }
-    
-    
-    
-    
 }
